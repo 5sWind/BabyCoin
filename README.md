@@ -1,37 +1,97 @@
-## Welcome to GitHub Pages
+## Welcome to BabyCoin stie, the ERC-20 Standard Token based on Ethereum
 
-You can use the [editor on GitHub](https://github.com/5sWind/babycoin/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### Let's start your journey with BabyCoin
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+- Install MetaMask
+(https://metamask.io/)
 
-### Markdown
+    Chrome or Firefox are recommended.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+    [![WX20180421-235321@2x.png](https://i.loli.net/2018/04/22/5adb615596620.png)](https://i.loli.net/2018/04/22/5adb615596620.png)
 
-```markdown
-Syntax highlighted code block
+- Add Token
 
-# Use of BabyCoin
-## Future Plan
+    BabyCoin Token Address:     0xF20A773b3d9f2a1F080fBAe1156A5E9768ceb615
+
+    Add to MetaMask Wallet:
+
+    [![WX20180422-000809@2x.png](https://i.loli.net/2018/04/22/5adb62975f365.png)](https://i.loli.net/2018/04/22/5adb62975f365.png)
+    [![WX20180422-000832@2x.png](https://i.loli.net/2018/04/22/5adb6297600e6.png)](https://i.loli.net/2018/04/22/5adb6297600e6.png)
+    [![WX20180422-000910@2x.png](https://i.loli.net/2018/04/22/5adb62975f9b7.png)](https://i.loli.net/2018/04/22/5adb62975f9b7.png)
+    [![WX20180422-000940@2x.png](https://i.loli.net/2018/04/22/5adb629760727.png)](https://i.loli.net/2018/04/22/5adb629760727.png)
+
+    Then the token will display in all your accounts.
+
 ### User Picture
 
-- Bulleted
-- List
+- 宝宝币如何获得？
 
-1. Numbered
-2. List
+    A: 参与我的讲座, 陪我打比赛, 玩我做的游戏, etc.
 
-**Bold** and _Italic_ and `Code` text
+- 宝宝币可以用来干什么？
 
-[Link](url) and ![Image](src)
-```
+    A: 收集一定数量的宝宝币, 可以兑换实物, 门票, 虚拟道具等等。
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- 我如何使用宝宝币？
 
-### Jekyll Themes
+    A: BabyCoin Store.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/5sWind/babycoin/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Future Plan
 
-### Support or Contact
+- 宝宝币兑换周边计划
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- 宝宝币个人品牌计划
+
+### Appendix
+
+- 关于代币空投的实现
+
+    声明代币现有数量，每个用户拥有量，发行总量
+    ```
+    uint256 public currentTotalSupply = 0; // 现发行数量
+    uint256 public airdropNum = 2 ether; // 每个用户拥有量
+    uint256 public airdropSupply = 2000; // 发行总量
+    ```
+
+    定义用户是否已经被空投过
+    > mapping(address => bool) touched; // 用户地址返回true和false的映射
+
+    空投函数
+    ```
+    /// @dev 如果用户没有被空投过，且现发行量小于发行总量，则进入此函数分支，把用户设为已被空投，给当前用户余额添加 2 BBC，现发行量数量 +2.
+    function _airdrop(address _owner) internal {
+        if(!touched[_owner] && currentTotalSupply < airdropSupply) {
+            touched[_owner] = true;
+            balances[_owner] = balances[_owner].add(airdropNum);
+            currentTotalSupply = currentTotalSupply.add(airdropNum);
+        }
+    }
+    ```
+
+    查询用户是否为可空投用户
+    ```
+    /// @dev 外部函数将调用此函数，如判定先现发行数量大于等于总量，或添加Token的人为该合约拥有者，则不进入分支返回当前余额。反之，进入分支判断为接受过空投，返回当前余额，没有接受空投的用户添加Token则余额+2。
+    function getBalance(address _who) internal constant returns (uint256)
+    {
+        if(currentTotalSupply < airdropSupply && _who != owner) {
+            if(touched[_who])
+                return balances[_who];
+            else
+                return balances[_who].add(airdropNum);
+        } else
+            return balances[_who];
+    }
+    ```
+
+- 我的社交网站
+
+    知乎: https://www.zhihu.com/people/5swind
+
+    Google+: https://plus.google.com/+5sWindZhang
+
+    Twitter: https://twitter.com/Fiveswind
+
+    Github: https://github.com/5sWind
+
+    Facebook: https://www.facebook.com/5sWind
+
