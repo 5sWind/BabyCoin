@@ -54,8 +54,10 @@
     ```
 
     定义用户是否已经被空投过
-    > mapping(address => bool) touched; // 用户地址返回true和false的映射
-
+    ```
+    mapping(address => bool) touched; // 用户地址返回true和false的映射
+    ```
+    
     空投函数
     ```
     /// @dev 如果用户没有被空投过，且现发行量小于发行总量，则进入此函数分支，把用户设为已被空投，给当前用户余额添加 2 BBC，现发行量数量 +2.
