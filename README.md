@@ -29,7 +29,8 @@
 
 ### About ERC-20 Standard Token
 
- ERC-20 是一个代币标准，我们可以通过它创建自己的代币，关于如何创建代币，可以参考我的讲座教程：https://docs.google.com/presentation/d/1GyCfQO3oHxO4NTnejNDnHwibom9uFQ8F381ng_AU8SA/edit?usp=sharing
+ ERC-20 是一个代币标准，我们可以通过它创建自己的代币，关于如何创建代币，可以参考我的讲座教程：
+ > https://docs.google.com/presentation/d/1GyCfQO3oHxO4NTnejNDnHwibom9uFQ8F381ng_AU8SA/edit?usp=sharing
 
 ### User Picture
 
