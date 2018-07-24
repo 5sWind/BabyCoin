@@ -1,4 +1,4 @@
-## Welcome to BabyCoin stie, the ERC-20 Standard Token based on Ethereum
+## Welcome to BabyCoin site, the ERC-20 Standard Token based on Ethereum
 
 <img src="https://i.loli.net/2018/05/24/5b064afff2c37.png" alt="Biocards_front.png" title="Biocards_front.png" width="250"/>
 <img src="https://i.loli.net/2018/05/24/5b064b00226b9.png" alt="Biocards_back.png" title="Biocards_back.png" width="250"/>
